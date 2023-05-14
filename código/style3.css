@@ -466,6 +466,8 @@ footer {
 
 #resultadoNegativo {
     display: none;
+    padding-top: 11%;
+    padding-bottom: 11%;
 }
 
 .product {
