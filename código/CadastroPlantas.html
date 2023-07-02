@@ -1,74 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-
+  <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="CadastroPlantas.css">
+  <title>Cadastro de Plantas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    select {
+      height: 38px;
+    }
+
+    button {
+      background-color: purple; /* Altere a cor aqui */
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background-color: #8a2be2; /* Altere a cor aqui */
+    }
+
+    /* Estilos para telas menores */
+    @media screen and (max-width: 480px) {
+      .container {
+        max-width: 100%;
+        margin: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Adicionar Planta</h1>
+  <div class="container">
+    <h1>Cadastro de Plantas</h1>
+    <form id="plant-form">
+      <label for="nome-popular">Nome Popular:</label>
+      <input type="text" id="nome-popular" required>
 
+      <label for="nome-cientifico">Nome Científico:</label>
+      <input type="text" id="nome-cientifico" required>
 
-    <div id="formContatos">
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <label for="campoNome">Nome (*)</label>
-                <input type="text" class="form-control" id="campoNome">
-            </div>
-            <div class="col-sm-6">
-                <label for="campoNomecien">Nome Científico (*)</label>
-                <input type="text" class="form-control" id="campoNomecien">
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-sm-4">
-                <label for="campoNome">Tempo de Exposição a Luz (*)</label>
-                <input type="text" class="form-control" id="campoLuz">
-            </div>
-            <div class="col-sm-4">
-                <label for="campoNomecien">Intervalo de Rega (*)</label>
-                <input type="text" class="form-control" id="campoRega">
-            </div>
-            <div class="col-sm-4">
-                <label for="campoNome">Tipo de Solo (*)</label>
-                <input type="text" class="form-control" id="campoSolo">
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-sm-12">
-                <label for="campoNome">Descrição (*)</label>
-                <input type="text" class="form-control" id="campoDescri">
-            </div>
-        </div>
+      <label for="codigo">Código:</label>
+      <input type="text" id="codigo" required>
 
-        <div class="form-group row">
-            <div class="col-sm-4">
-                <small>(*) Campos obrigatórios</small>
-            </div>
-        </div>
+      <label for="substrato">Substrato:</label>
+      <input type="text" id="substrato" required>
 
-        <div class="form-group row">
-            <div class="col-sm-12">
-                <input type="button" class="btn btn-success" id="btnIncluirContato" value="Inserir">
-                <input type="button" class="btn btn-secondary" id="btnCarregaDados" value="Carrega Dados">
-            </div>
-        </div>
-    </div>
+      <label for="adubo">Adubo:</label>
+      <input type="text" id="adubo" required>
 
+      <label for="vaso">Vaso:</label>
+      <input type="text" id="vaso" required>
 
-    <div id="tela">
-    
-    </div>
+      <label for="quantidade-sol">Quantidade de Sol:</label>
+      <select id="quantidade-sol" required>
+        <option value="">Selecione</option>
+        <option value="pouco">Pouco Sol</option>
+        <option value="moderado">Sol Moderado</option>
+        <option value="muito">Muito Sol</option>
+      </select>
 
+      <label for="quantidade-agua">Quantidade de Água:</label>
+      <select id="quantidade-agua" name="quantidade-agua">
+        <option value="">Selecione</option>
+        <option value="1xdia">1 Vez por Dia</option>
+        <option value="2xdia">2 Vezes ao Dia</option>
+        <option value="1xsem">1 Vez por Semana</option>
+        <option value="2xsem">2 Vezes por Semana</option>
+        <option value="3xsem">3 Vezes por Semana</option>
+        <option value="4xsem">4 Vezes por Semana</option>
+        <option value="1xmes">1 Vez por Mês</option>
+      </select>
 
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
 
+  <script>
+    document.getElementById('plant-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita o envio do formulário
 
+      // Recupera os valores dos campos do formulário
+      var nomePopular = document.getElementById('nome-popular').value;
+      var nomeCientifico = document.getElementById('nome-cientifico').value;
+      var codigo = document.getElementById('codigo').value;
+      var substrato = document.getElementById('substrato').value;
+      var adubo = document.getElementById('adubo').value;
+      var vaso = document.getElementById('vaso').value;
+      var quantidadeSol = document.getElementById('quantidade-sol').value;
+      var quantidadeAgua = document.getElementById('quantidade-agua').value;
 
-    <script src="CadastroPlantas.js"></script>
+      // Aqui você pode fazer o que quiser com os dados do formulário
+      // Por exemplo, enviar para um servidor ou armazenar em algum lugar
+
+      // Exibindo os valores no console apenas como exemplo
+      console.log('Nome Popular:', nomePopular);
+      console.log('Nome Científico:', nomeCientifico);
+      console.log('Código:', codigo);
+      console.log('Substrato:', substrato);
+      console.log('Adubo:', adubo);
+      console.log('Vaso:', vaso);
+      console.log('Quantidade de Sol:', quantidadeSol);
+      console.log('Quantidade de Água:', quantidadeAgua);
+
+      // Limpa os campos do formulário após o cadastro
+      document.getElementById('plant-form').reset();
+    });
+  </script>
 </body>
-
 </html>
