@@ -1,5 +1,7 @@
 // Recupera os dados salvos no Local Storage
-var dadosArquivos = localStorage.getItem("arquivos");
+var dadosArquivos = localStorage.getItem("plantas");
+
+/*
 
 // Verifica se existem dados salvos
 if (dadosArquivos) {
@@ -84,3 +86,5 @@ botao.addEventListener('click', function() {
     console.log("Nenhum dado encontrado no Local Storage.");
   }
 });
+
+*/
